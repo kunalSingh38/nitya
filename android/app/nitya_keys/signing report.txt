@@ -1,0 +1,73 @@
+11:11:59: Executing task 'signingReport'...
+
+Executing tasks: [signingReport] in project D:\AdsAndUrl\Nitya-Tax-Association\android\app
+
+
+> Task :app:signingReport
+Variant: profileUnitTest
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: debugUnitTest
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: release
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: debug
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: releaseUnitTest
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\Shivam Singh\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: 41:24:06:4C:E6:B5:D6:1C:8D:28:09:0F:8D:06:E4:9B
+SHA1: 5D:97:D4:9D:17:84:F6:9E:59:7F:B9:74:1A:72:0B:AE:12:B7:C2:75
+SHA-256: 23:C9:11:9E:0D:8D:38:D4:BA:D9:5F:18:21:F8:5C:E8:E5:86:79:DB:DE:1C:71:F2:A3:48:DA:F4:D0:25:BE:A5
+Valid until: Friday, 29 July, 2050
+----------
+
+BUILD SUCCESSFUL in 9s
+1 actionable task: 1 executed
+11:12:10: Task execution finished 'signingReport'.
