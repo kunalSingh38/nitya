@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -5,24 +7,25 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_share/flutter_share.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:html_unescape/html_unescape_small.dart';
-import 'package:nitya/model/post.dart';
 import 'package:nitya/ui/bookmark/bloc/bookmark_bloc.dart';
 import 'package:nitya/ui/common/notification_app_bar.dart';
 import 'package:nitya/ui/feedback/feedback_page.dart';
 import 'package:nitya/utils/app_utils.dart';
 import 'package:nitya/utils/constants.dart';
 import 'package:nitya/utils/image_helper.dart';
+
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../model/post.dart';
+
 class PostDetails extends StatefulWidget {
-  final Post post;
+  Post post;
 
   PostDetails(this.post);
 
@@ -44,8 +47,10 @@ class _PostDetailsState extends State<PostDetails> {
   @override
   void initState() {
     super.initState();
-    //createDynamicLink(widget.post);
-    if (widget.post.bookmarkedBy.contains(AppUtils.currentUser.userId.toString())) {
+
+    createDynamicLink(widget.post);
+    if (widget.post.bookmarkedBy
+        .contains(AppUtils.currentUser.userId.toString())) {
       if (mounted)
         setState(() {
           _isBooked = true;
@@ -157,14 +162,11 @@ class _PostDetailsState extends State<PostDetails> {
                                 }),
                             IconButton(
                                 icon: Icon(Icons.share, color: kPrimaryColor),
-                                onPressed: () async{
-                                  await FlutterShare.share(
-                                      title: widget.post.title.toString(),
-                                      text: widget.post.title.toString()+'\n\nDownload NITYA Tax Associates App to read more',
-                                      linkUrl: 'https://play.google.com/store/apps/details?id=com.entrepreter.nityaassociation\n\nhttps://apps.apple.com/in/app/nitya-tax-associates/id1552181161',
-                                      chooserTitle: '');
-                                  // if (url != null)
-                                  //   Share.share("${widget.post.title}\n\nDownload NITYA Tax Associates App to read more ${url.shortUrl}", subject: "${widget.post.title}");
+                                onPressed: () {
+                                  if (url != null)
+                                    Share.share(
+                                        "${widget.post.title}\n\nDownload NITYA Tax Associates App to read more ${url}",
+                                        subject: "${widget.post.title}");
                                 })
                           ],
                         ),
@@ -246,58 +248,40 @@ class _PostDetailsState extends State<PostDetails> {
     );
   }
 
-  //ShortDynamicLink url;
-  ShortDynamicLink url;
-  // createDynamicLink(Post post) async{
-  //   final dynamicLinkParams = DynamicLinkParameters(
-  //     link: Uri.parse("https://nityataxassociates.page.link/post?id=${widget.post.id}"),
-  //     uriPrefix: "https://nityataxassociates.page.link",
-  //     androidParameters: const AndroidParameters(
-  //       packageName: "com.entrepreter.nityaassociation",
-  //       minimumVersion: 30,
-  //     ),
-  //     iosParameters: const IOSParameters(
-  //       bundleId: 'com.adsandurl.nta',
-  //       minimumVersion: '1.0.1',
-  //       appStoreId: '1552181161',
-  //     ),
-  //     socialMetaTagParameters: SocialMetaTagParameters(
-  //       title: post.title,
-  //       imageUrl: Uri.parse("${post.url}"),
-  //     ),
-  //   );
-  //   final dynamicLink = await FirebaseDynamicLinks.instance.buildShortLink(dynamicLinkParams);
-  //   setState(() {
-  //     url = dynamicLink;
-  //   });
-  // }
+  String url;
 
-  // createDynamicLink(Post post) async {
-  //   print("calling this");
-  //   final DynamicLinkParameters dynamicLinkParameters = DynamicLinkParameters(
-  //     uriPrefix: "https://nityataxassociates.page.link",
-  //     socialMetaTagParameters: SocialMetaTagParameters(
-  //       imageUrl: Uri.parse("${post.url}"),
-  //       description: unescape.convert("${post.description}"),
-  //       title: post.title,
-  //     ),
-  //     link: Uri.parse("https://nityataxassociates.page.link/post?id=${widget.post.id}"),
-  //     iosParameters: IosParameters(
-  //       bundleId: 'com.adsandurl.nta',
-  //       minimumVersion: '1.0.1',
-  //       appStoreId: '1552181161',
-  //     ),
-  //     androidParameters: AndroidParameters(
-  //       packageName: "com.entrepreter.nityaassociation",
-  //     ),
-  //   );
-  //   dynamicLinkParameters.buildShortLink().then((value) {
-  //      setState(() {
-  //          url = value;
-  //      });
-  //      print(url);
-  //    });
-  // }
+  createDynamicLink(Post post) async {
+    final DynamicLinkParameters dynamicLinkParameters = DynamicLinkParameters(
+      uriPrefix: "https://nityataxassociates.page.link",
+      socialMetaTagParameters: SocialMetaTagParameters(
+        imageUrl: Uri.parse(
+          "${post.url}",
+        ),
+        description: unescape.convert("${post.description}"),
+        title: post.title,
+      ),
+      link: Uri.parse(
+        "https://nityataxassociates.page.link/post?id=${widget.post.id}",
+      ),
+      iosParameters: IOSParameters(
+        bundleId: 'com.adsandurl.nta',
+        minimumVersion: '1.0.1',
+        appStoreId: '1552181161',
+      ),
+      androidParameters: AndroidParameters(
+        packageName: "com.entrepreter.nityaassociation",
+      ),
+    );
+
+    // dynamicLinkParameters.buildShortLink().then((value) {
+    //   setState(() {
+    //     url = value;
+    //   });
+    // });
+    setState(() {
+      url = dynamicLinkParameters.link.toString();
+    });
+  }
 }
 
 lunchUrl(String url) async {

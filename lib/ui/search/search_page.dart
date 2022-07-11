@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nitya/model/event.dart';
-import 'package:nitya/model/post.dart';
 import 'package:nitya/model/search.dart';
 import 'package:nitya/ui/event/event_details.dart';
 import 'package:nitya/ui/feedback/feedback_page.dart';
@@ -9,6 +8,8 @@ import 'package:nitya/ui/post/post_detail_page.dart';
 import 'package:nitya/ui/search/bloc/search_bloc.dart';
 import 'package:nitya/utils/app_utils.dart';
 import 'package:nitya/utils/constants.dart';
+
+import '../../model/post.dart' as p;
 
 class SearchPage extends StatefulWidget {
   @override
@@ -112,13 +113,14 @@ class _SearchPageState extends State<SearchPage> {
                                                     builder: (_) =>
                                                         EventDetails(event)));
                                           } else {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) => PostDetails(
-                                                        Post.fromJson(
-                                                            posts[index]
-                                                                .toJson()))));
+                                            // Navigator.push(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (_) => PostDetails(
+                                            //             p.Post.fromJson(
+                                            //                 posts[index]
+                                            //                     .toJson()))));
+                                            print(posts[index].toJson());
                                           }
                                         },
                                         contentPadding: EdgeInsets.all(0),

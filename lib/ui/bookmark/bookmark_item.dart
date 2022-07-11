@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nitya/model/bookmark_model.dart';
-import 'package:nitya/ui/event/chew_video_player.dart';
-import 'package:nitya/ui/post/post_detail_page.dart';
-import 'package:nitya/ui/video_player.dart';
+// import 'package:nitya/ui/event/chew_video_player.dart';
+// import 'package:nitya/ui/post/post_detail_page.dart';
+// import 'package:nitya/ui/video_player.dart';
 import 'package:nitya/utils/app_utils.dart';
 import 'package:nitya/utils/constants.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -23,10 +23,10 @@ class BookMarkItem extends StatelessWidget {
     return Container(
       child: ListTile(
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => PostDetails(_bookmarkModel.post)));
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //         builder: (_) => PostDetails(_bookmarkModel.post)));
         },
         title: Text(
           _bookmarkModel.post.title,

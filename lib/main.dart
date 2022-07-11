@@ -1,4 +1,8 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/observer.dart';
+// ignore_for_file: unused_element
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -17,13 +21,15 @@ AndroidNotificationChannel channel = const AndroidNotificationChannel(
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-Future<void> backgroundHandler(RemoteMessage message) async {}
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('A bg message just showed up :  ${message.messageId}');
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
@@ -35,12 +41,14 @@ void main() async {
     badge: true,
     sound: true,
   );
+
   runApp(RestartWidget(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  // static FirebaseAnalytics analytics = FirebaseAnalytics();
+  // static FirebaseAnalyticsObserver observer =
+  //     FirebaseAnalyticsObserver(analytics: analytics);
   //locator.registerLazySingleton(() => AnalyticsService());
   //serviceLocator.registerLazySingleton(() => FirebaseAnalyticsService());
 
@@ -52,7 +60,7 @@ class MyApp extends StatelessWidget {
     ]);
     return MaterialApp(
       title: 'Nitya Tax Association',
-      navigatorObservers: <NavigatorObserver>[observer],
+      // navigatorObservers: <NavigatorObserver>[observer],
       /*navigatorObservers: [
         locator<AnalyticsService>().getAnalyticsObserver(),
       ],*/

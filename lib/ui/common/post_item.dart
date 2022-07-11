@@ -25,7 +25,7 @@ class PostItem extends StatelessWidget {
     String videoId;
 
     if (post.postType == VIDEO) {
-      // videoId = YoutubePlayer.convertUrlToId(post.url);
+      videoId = YoutubePlayer.convertUrlToId(post.url);
     }
     print(videoId); // BBAyRBTfsOU
     return ListTile(
