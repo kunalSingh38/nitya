@@ -249,7 +249,7 @@ class _PostDetailsState extends State<PostDetails> {
   }
 
   String url;
-
+  FirebaseDynamicLinks dynamicLinks = FirebaseDynamicLinks.instance;
   createDynamicLink(Post post) async {
     final DynamicLinkParameters dynamicLinkParameters = DynamicLinkParameters(
       uriPrefix: "https://nityataxassociates.page.link",
@@ -273,13 +273,10 @@ class _PostDetailsState extends State<PostDetails> {
       ),
     );
 
-    // dynamicLinkParameters.buildShortLink().then((value) {
-    //   setState(() {
-    //     url = value;
-    //   });
-    // });
+    final ShortDynamicLink shortLink =
+        await dynamicLinks.buildShortLink(dynamicLinkParameters);
     setState(() {
-      url = dynamicLinkParameters.link.toString();
+      url = shortLink.shortUrl.toString();
     });
   }
 }

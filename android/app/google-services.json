@@ -29,13 +29,6 @@
             {
               "client_id": "964015782728-fck0g7tt5oihp213jt1qm7kvjka9bmcm.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "964015782728-7hi9i5qqc49qjdbvm8hr1fgd9abti7jl.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.entrepreter.nityaassociation"
-              }
             }
           ]
         }

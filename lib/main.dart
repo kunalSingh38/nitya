@@ -12,35 +12,9 @@ import 'package:nitya/ui/splash/pre_splash.dart';
 import 'package:nitya/utils/constants.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-AndroidNotificationChannel channel = const AndroidNotificationChannel(
-    'nityaapp', // id
-    'High Importance Notifications', // title
-    importance: Importance.high,
-    playSound: true);
-
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  print('A bg message just showed up :  ${message.messageId}');
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-      ?.createNotificationChannel(channel);
-
-  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
 
   runApp(RestartWidget(child: MyApp()));
 }
